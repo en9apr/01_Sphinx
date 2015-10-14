@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1.1. Data Types &mdash; The Visual Room</title>
+    <title>1. Data Types &mdash; The Visual Room</title>
     
     <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -26,13 +26,13 @@
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="The Visual Room" href="index.html" />
     <link rel="up" title="1. Fortran Programming Language" href="fortran.html" />
-    <link rel="next" title="1.2. Operators" href="fortran_operators.html" />
+    <link rel="next" title="2. Operators" href="fortran_operators.html" />
     <link rel="prev" title="1. Fortran Programming Language" href="fortran.html" /> 
   </head>
   <body>
       <div class="header"><h1 class="heading"><a href="index.html">
           <span>The Visual Room</span></a></h1>
-        <h2 class="heading"><span>1.1. Data Types</span></h2>
+        <h2 class="heading"><span>1. Data Types</span></h2>
       </div>
       <div class="topnav">
       
@@ -41,7 +41,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="fortran_operators.html">1.2. Operators</a>&#160;&#160;»
+        <a href="fortran_operators.html">2. Operators</a>&#160;&#160;»
         </p>
 
       </div>
@@ -49,7 +49,7 @@
         
         
   <div class="section" id="data-types">
-<h1>1.1. Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h1>
+<h1>1. Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><a class="reference internal" href="#primitive-data-types" id="id1">Primitive Data Types</a><ul>
@@ -82,9 +82,9 @@
 </ul>
 </div>
 <div class="section" id="primitive-data-types">
-<h2><a class="toc-backref" href="#id1">1.1.1. Primitive Data Types</a><a class="headerlink" href="#primitive-data-types" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id1">1.1. Primitive Data Types</a><a class="headerlink" href="#primitive-data-types" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="declaration-and-initialisation">
-<h3><a class="toc-backref" href="#id2">1.1.1.1. Declaration and Initialisation</a><a class="headerlink" href="#declaration-and-initialisation" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id2">1.1.1. Declaration and Initialisation</a><a class="headerlink" href="#declaration-and-initialisation" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fortran does not initialise values, these will be &#8220;undefined&#8221; unless you give an initial value</li>
 <li>It&#8217;s best to <strong>separate declaration from initialisation</strong>, because intialisation and declaration together creates a static variable (which may not be what you intended)</li>
@@ -148,7 +148,7 @@
 </tbody>
 </table>
 <div class="section" id="specifications">
-<h4><a class="toc-backref" href="#id3">Specifications</a><a class="headerlink" href="#specifications" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id3">1.1.1.1. Specifications</a><a class="headerlink" href="#specifications" title="Permalink to this headline">¶</a></h4>
 <p>These are included in brackets after the data type, e.g.</p>
 <div class="highlight-fortran"><div class="highlight"><pre><span class="c">! real(specification) :: name_1, name_2</span>
 </pre></div>
@@ -232,7 +232,7 @@
 </table>
 </div>
 <div class="section" id="attributes">
-<h4><a class="toc-backref" href="#id4">Attributes</a><a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id4">1.1.1.2. Attributes</a><a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h4>
 <p>These are included  after the data type and after the specification, e.g.</p>
 <div class="highlight-fortran"><div class="highlight"><pre><span class="c">! real(specification), attributes :: name_1, name_2</span>
 </pre></div>
@@ -318,7 +318,7 @@
 </div>
 </div>
 <div class="section" id="substrings">
-<h3><a class="toc-backref" href="#id5">1.1.1.2. Substrings</a><a class="headerlink" href="#substrings" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id5">1.1.2. Substrings</a><a class="headerlink" href="#substrings" title="Permalink to this headline">¶</a></h3>
 <p>Let&#8217;s say we had the string <tt class="docutils literal"><span class="pre">string</span> <span class="pre">=</span> <span class="pre">&quot;12345&quot;</span></tt></p>
 <p>To extract elements, use:</p>
 <div class="highlight-fortran"><div class="highlight"><pre><span class="c">! string(start : end)</span>
@@ -358,7 +358,7 @@
 </table>
 </div>
 <div class="section" id="initialise-a-range-of-values-to-the-same-value">
-<h3><a class="toc-backref" href="#id6">1.1.1.3. Initialise a Range of Values to the Same Value</a><a class="headerlink" href="#initialise-a-range-of-values-to-the-same-value" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id6">1.1.3. Initialise a Range of Values to the Same Value</a><a class="headerlink" href="#initialise-a-range-of-values-to-the-same-value" title="Permalink to this headline">¶</a></h3>
 <p>Fortran allows us to <strong>initialise a range of values</strong> to the same value using the <tt class="docutils literal"><span class="pre">data</span></tt> statement:</p>
 <div class="highlight-fortran"><div class="highlight"><pre><span class="c">! data nlist /clist/</span>
 </pre></div>
@@ -389,9 +389,9 @@
 </div>
 </div>
 <div class="section" id="array-manipulation">
-<h2><a class="toc-backref" href="#id7">1.1.2. Array Manipulation</a><a class="headerlink" href="#array-manipulation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">1.2. Array Manipulation</a><a class="headerlink" href="#array-manipulation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="array-initialisation-and-allocation">
-<h3><a class="toc-backref" href="#id8">1.1.2.1. Array Initialisation and Allocation</a><a class="headerlink" href="#array-initialisation-and-allocation" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id8">1.2.1. Array Initialisation and Allocation</a><a class="headerlink" href="#array-initialisation-and-allocation" title="Permalink to this headline">¶</a></h3>
 <p>In the Primative Types section, we declared arrays and sometimes gave them shape. We also need to be able to give arrays initial values and if the shape is deferred, specify the shape using <tt class="docutils literal"><span class="pre">allocate</span></tt>.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -472,7 +472,7 @@
 </table>
 </div>
 <div class="section" id="array-extraction">
-<h3><a class="toc-backref" href="#id9">1.1.2.2. Array Extraction</a><a class="headerlink" href="#array-extraction" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id9">1.2.2. Array Extraction</a><a class="headerlink" href="#array-extraction" title="Permalink to this headline">¶</a></h3>
 <p>Let&#8217;s say we had the array</p>
 <div class="highlight-fortran"><div class="highlight"><pre><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="mi">8</span><span class="p">),</span> <span class="k">dimension</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="kd">::</span> <span class="n">a</span>
 </pre></div>
@@ -516,13 +516,13 @@
 </div>
 </div>
 <div class="section" id="reference-section">
-<h2><a class="toc-backref" href="#id10">1.1.3. Reference Section</a><a class="headerlink" href="#reference-section" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id10">1.3. Reference Section</a><a class="headerlink" href="#reference-section" title="Permalink to this headline">¶</a></h2>
 <p>This section contains methods I haven&#8217;t used, but they are useful in order to interpret the code of others.</p>
 <div class="section" id="derived-data-types">
-<h3><a class="toc-backref" href="#id11">1.1.3.1. Derived Data Types</a><a class="headerlink" href="#derived-data-types" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id11">1.3.1. Derived Data Types</a><a class="headerlink" href="#derived-data-types" title="Permalink to this headline">¶</a></h3>
 <p>I haven&#8217;t used these, but, this is how a Dervied Data Type is used:</p>
 <div class="section" id="definition">
-<h4><a class="toc-backref" href="#id12">Definition</a><a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id12">1.3.1.1. Definition</a><a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-fortran"><div class="highlight"><pre><span class="k">type </span><span class="n">person</span>
     <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="kd">::</span> <span class="n">name</span>
     <span class="kt">integer</span> <span class="kd">::</span> <span class="n">age</span>
@@ -531,26 +531,26 @@
 </div>
 </div>
 <div class="section" id="instantiatation">
-<h4><a class="toc-backref" href="#id13">Instantiatation</a><a class="headerlink" href="#instantiatation" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id13">1.3.1.2. Instantiatation</a><a class="headerlink" href="#instantiatation" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-fortran"><div class="highlight"><pre><span class="k">type</span><span class="p">(</span><span class="n">person</span><span class="p">)</span> <span class="o">=</span> <span class="n">person_one</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="constructor">
-<h4><a class="toc-backref" href="#id14">Constructor</a><a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id14">1.3.1.3. Constructor</a><a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-fortran"><div class="highlight"><pre><span class="n">person_one</span> <span class="o">=</span> <span class="n">person</span><span class="p">(</span><span class="s2">&quot;andrew&quot;</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="how-to-access-values">
-<h4><a class="toc-backref" href="#id15">How to Access Values</a><a class="headerlink" href="#how-to-access-values" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id15">1.3.1.4. How to Access Values</a><a class="headerlink" href="#how-to-access-values" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-fortran"><div class="highlight"><pre><span class="n">name</span> <span class="o">=</span> <span class="n">person_one</span><span class="p">%</span><span class="n">name</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="pointers">
-<h3><a class="toc-backref" href="#id16">1.1.3.2. Pointers</a><a class="headerlink" href="#pointers" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id16">1.3.2. Pointers</a><a class="headerlink" href="#pointers" title="Permalink to this headline">¶</a></h3>
 <p>I haven&#8217;t used Pointers in Fortran, but this is a list of commands:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -603,7 +603,7 @@
 </table>
 </div>
 <div class="section" id="fortran-77">
-<h3><a class="toc-backref" href="#id17">1.1.3.3. Fortran 77</a><a class="headerlink" href="#fortran-77" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id17">1.3.3. Fortran 77</a><a class="headerlink" href="#fortran-77" title="Permalink to this headline">¶</a></h3>
 <p>To be able to read old Fortran, we might need these definitions. I am filling this table out to decode Ferzinger and Peric&#8217;s notation (which uses old formatting)</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -685,13 +685,12 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="fortran_operators.html">1.2. Operators</a>&#160;&#160;»
+        <a href="fortran_operators.html">2. Operators</a>&#160;&#160;»
         </p>
 
       </div>
 
     <div class="footer">
-        &copy; Copyright 2015, Andrew Roberts.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>

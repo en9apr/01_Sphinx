@@ -1,6 +1,6 @@
-=======================
-Workspaces and Projects
-=======================
+================================================
+High Performance Scientific Computing - Projects
+================================================
 
 This page contains the following codes:
 

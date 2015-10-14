@@ -15,23 +15,15 @@ Notes on CFD
 
 These notes are based on "Computational Fluid Dynamics" by `Professor Lorena Barba <http://www.seas.gwu.edu/lorena-barba>`_ and "High Performance Scientific Computing" by `Professor Randall LeVeque <http://depts.washington.edu/amath/staff-members/randy-leveque/>`_. The rest of the notes are based on literature from variously quoted academic resources.
 
-Computational Fluid Dynamics MOOC
----------------------------------
-
-.. toctree::
-   :maxdepth: 2
-   :numbered: 4
-   
-   barba_cfd_theory
-   barba_cfd_projects
-
-High Performance Scientific Computing MOOC
-------------------------------------------
+Theory and Projects
+-------------------
 
 .. toctree::
    :maxdepth: 1
    :numbered: 4
    
+   barba_cfd_theory
+   barba_cfd_projects 
    hpsc
 
 Literature
@@ -55,44 +47,33 @@ Literature
 Notes on Computing
 ==================
 
-The Python notes are largely based on "Introduction to Interactive Programming in Python" by `Professor Joe Warren <http://report.rice.edu/sir/faculty.detail?p=A2D78585F9777919/>`_ et al. The rest of the notes are a complied set from various internet sources.
+The Python notes are largely based on "Introduction to Interactive Programming in Python" by `Professor Joe Warren <http://report.rice.edu/sir/faculty.detail?p=A2D78585F9777919>`_ et al. The rest of the notes are a complied set from various internet sources.
 
-Fortran
--------
+Programming
+-----------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :numbered: 4
 
    fortran
    fortran_use
-
-Python
-------
-
-.. toctree::
-   :maxdepth: 2
-   :numbered: 4
-
    python_language
-
-Virtual Machines
-----------------
-
-.. toctree::
-   :maxdepth: 2
-   :numbered: 4
-
-   virtual_machines
-
-Version Control
----------------
-
-.. toctree::
-   :maxdepth: 2
-   :numbered: 4
-
    git
+   openfoam
+   latex
+
+Operating Systems
+-----------------
+
+.. toctree::
+   :maxdepth: 1
+   :numbered: 4
+
+   linux
+   virtual_machines
+   virtual_machines_2
+   virtual_machines_3
 
 Notes on Mathematics
 ====================

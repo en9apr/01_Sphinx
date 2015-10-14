@@ -1,6 +1,6 @@
-=================
- Version Control
-=================
+==========================
+How to Use Version Control
+==========================
 
 .. contents::
    :local:

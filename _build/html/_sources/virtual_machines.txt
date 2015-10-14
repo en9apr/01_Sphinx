@@ -24,6 +24,8 @@ Disadvantages
 Process of Creating a VM
 ========================
 
+`Process of Creating the VM for CentOS <http://www.tecmint.com/centos-7-installation/>`_
+
 Download Disk Image
 -------------------
 
@@ -33,7 +35,27 @@ Download Disk Image
 
 * Why Xubuntu:
 
- - It's very lightweight
+ - It's very lightweight (maybe not as lightweight as I thought... as it has package manager)
+
+* Why not CentOS?
+
+ - It doesn't have package manager
+
+* Download CentOS (minimal - if you know what you are doing... this will not install any software, even if you select it in the installation):
+
+`Minimal CentOS <http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1503-01.iso>`_
+
+I used version 7 (although others use 6.6). The mirror I used to download it was this (the iso is called: CentOS-7-x86_64-Minimal-1503-01.iso)
+
+`Minimal Centos Mirror <http://www.mirrorservice.org/sites/mirror.centos.org/7/isos/x86_64/CentOS-7-x86_64-Minimal-1503-01.iso>`_
+
+* Download CentOS DVD:
+
+`DVD Centos <http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-DVD-1503-01.iso>`_
+
+I used version 7 (although others use 6.6). The mirror I used to download it was this (the iso is called: CentOS-7-x86_64-DVD-1503-01.iso )
+
+`DVD Centos Mirror <http://mirrors.coreix.net/centos/7/isos/x86_64/CentOS-7-x86_64-DVD-1503-01.iso>`_
 
 Create a New VirtualBox
 -----------------------
@@ -48,28 +70,35 @@ Create a New VirtualBox
  - Type: Linux 
  - Version: Xubuntu 64 bit
 
+* Or:
+
+ - CentOS-7-x86_64-DVD-1503-01
+ - Type: Linux
+ - Version: Red Hat (64-bit)
+
 Create Virtual Hard Drive
 -------------------------
 
 * Memory size (half of what is installed): 6GB
 * Select option: Create a virtual harddrive now
 * Select option: VirtualBox Disk Image (experience is that the other options don't work any better)
-* Select option: Fixed size 20GB (so that we have enough space for Xubuntu and other updates)
-* Hit "Create" (might take about 10 minutes or so)
+* Select option: Fixed size 20GB (so that we have enough space for Xubuntu and other updates) ... Actually I think 50GB is better for having space to do things.
+* Hit "Create" (might take about 10 minutes or so... will take 30min if it's 50GB)
 
 You now have a virtual harddrive
 
-Install Operating System
-------------------------
+Install Operating System - Ubuntu
+---------------------------------
 
 * In VirtualBox > Settings > Storage > IDE (Empty)
 
   - Controller: IDE
-  - Choose Ubuntu ISO Image
+  - Choose ISO Image
 
 * In VirtualBox > Start 
 
  - Select: Install Ubuntu
+
  - Don't Select: Download updates while installing
  - Gave username and password
 
@@ -87,13 +116,78 @@ Install Operating System
 
 **Snapshot taken at this point**
 
+
+Install Operating System - CentOS
+---------------------------------
+
+* In VirtualBox > Settings > Storage > IDE (Empty)
+
+  - Controller: IDE
+  - Choose ISO Image
+
+* In VirtualBox > Start 
+
+ - Select: Install CentOS 7
+ - Select: English (United Kingdom) - Continue
+ - Select the Partitioning
+ - I will configure partitioning
+ - Done
+
+* New CentOS mount points (there won't be any existing ones). Create:
+
+ - Swap partition (double the RAM we allocated for the VM - i.e. 12GB)
+ - Root partition - 20GB (I think this is where software goes)
+ - Home partition - the rest of the space i.e. 18GB (for files)
+ - For some reason when I entered these numbers, I got 11.18GB, 18.63GB and 16.76GB for swap, root and home respectively. Although the centos volume said 4096kB free. They are all standard partitions.
+ - Press Done
+ - Accept changes
+
+* Software installation
+
+ - GNOME Applications
+ - Internet Applications
+ - Legacy X Window System Compatibility
+ - Office Suite and Productivity
+ - Compatibility Libraries
+ - Development Tools
+ - Security Tools
+
+* Kdump:
+
+ - Un-enable kdump
+ - Done
+
+* Network and hostname:
+
+ - I don't think I have a static IP, so I just turned the ethernet on
+ - Done
+
+* Begin installation
+
+* Root Password is set to something
+
+* User is an administrator and has the same password
+
+* Finish configuration
+
+* Reboot the system
+
+* When it rebooted, I selected English and English(UK)
+
+**Snapshot taken at this point**
+
+
 Change the Settings of the Virtual Machine
 ------------------------------------------
 
+* In VirtualBox > Settings > Display
+
+  - 128MB Video Memory for increased speed
+  - 3D acceleration
+
 * In VirtualBox > Settings > System
 
-  - 12MB Video Memory is fine
-  - Processor: change to 3 (needs virtualisation extensions)
+  - Processor: change to 4 (needs virtualisation extensions)
   - Execution Cap: 100%
 
 Run Updates for Xubuntu

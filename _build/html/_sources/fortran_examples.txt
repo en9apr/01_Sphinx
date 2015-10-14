@@ -1,0 +1,277 @@
+================
+Fortran Examples
+================
+
+.. contents::
+   :local:
+
+.. highlight:: fortran
+
+Here are some good examples of Fortran style, separating the comments clearly from the code
+
+GCD
+===
+
+::
+
+	!-GCD -------------------------------------------------------------------
+	! Function to calculate the greatest common divisor of integers A and
+	! B using the Euclidean algorithm. It returns the value 0 if both of
+	! A and B are 0. Local variable:
+	!    A1, B1 : absolute values of A and B
+	!    Remainder : remainder of A divided by B
+	!
+	! Input: A and B
+	! Output: GCD of A and B (0 if both are 0)
+	!------------------------------------------------------------------------
+
+	FUNCTION GCD(A, B)
+
+		INTEGER GCD, A1, B1, Remainder
+		INTEGER, INTENT(IN) :: A, B
+		
+		A1 = ABS(A)
+		Bl = ABS(B)
+		IF (Bl == 0) THEN
+			GCD = A1
+		ELSE
+			DO
+				Remainder = MOD(Al, Bl)
+				IF (Remainder == 0) EXIT ! Remainder is 0, terminate repetition
+				A1 = B1
+				B1 = Remainder
+			END DO
+
+			GCD = Bl
+		END IF
+
+	END FUNCTION GCD
+
+Prime
+=====
+	
+To determine if a positive integer N is prime, one need only check if it has any divisors in the
+range 2 through the square root of N. For if some integer D > SQRT (N) divides N, say N =
+D * K, then K would be a divisor of N which is less than SQR’I‘ (N). And, of course, if 2 does
+not divide N, then neither does any even integer. These ideas are incorporated into the
+following function subprogram Prime:
+
+::
+
+	!-Prime ----------------------------------------------------------------
+	! Function to determine if positive integer N is a prime. The set
+	! consisting of 2 and odd integers in the range 3 through SQRT(N) is
+	! searched for divisors of N; the search terminates when one is found
+	! (Prime = .TRUE.) or all numbers in this set have been checked.
+	! Local variable:
+	!   Divisor : Possible divisor of N
+	!   Accepts: N
+	!   Returns: .TRUE. if N is a prime, .FALSE. otherwise
+	!-----------------------------------------------------------------------
+
+	FUNCTION Prime(N)
+	
+		LOGICAL :: Prime
+		INTEGER, INTENT(IN) :: N
+		INTEGER :: Divisor
+		
+		! Check if N is even
+		IF (N == 2) THEN
+			Prime = .TRUE.
+		ELSE IF ((N < 2) .OR. (MOD(N, 2) == 0)) THEN
+			Prime = .FALSE.
+		ELSE ! Check for odd divisors in the range 3 through SQRT(N)
+			Divisor = 3
+			Prime = .TRUE.
+			! While not Prime and Divisor is less than or equal to SQRT(N) do:
+			DO
+				IF (.NOT. Prime .OR. (Divisor**2 > N)) EXIT
+				IF (MOD(N, Divisor) == 0) THEN
+					Prime = .PALSE.
+				ELSE
+					Divisor = Divisor + 2
+				END IF
+			END DO
+		END IF
+	END FUNCTION Prime
+
+Prime Factorisation
+===================
+
+For some reason I've lost the highlighting... Literal include might be better than inline for lots of code on a page.
+
+::
+
+	!-Prime_Factorization --------------------------------------------------
+	! Program to display the prime factorization of a number and indicate
+	! if it is a prime. Variable used:
+	!   Number : integer to be factored
+	!   Prime : true if number is prime, false otherwise
+	!   PrintPrimeFactorization : subroutine to display the prime
+	!   factorization of a number
+	! Input: Number
+	! Output: Prime factorization of Number (by PrintPrimeFactorization)
+	!-----------------------------------------------------------------------
+	
+	PROGRAM Prime_Factorization
+		IMPLICIT NONE
+		INTEGER :: Number
+		LOGICAL :: Prime
+		
+		DO
+			WRITE (*, '(/1X, A)‘, ADVANCE = “NO") &
+				"‘Enter an integer > 1 (O to stop): "
+				READ *, Number
+				IF (Number <= 1) EXIT
+				CALL PrintPrimeFactorization(Number, Prime)
+				IF (Prime) PRINT *, “is prime“
+		END DO
+
+		CONTAINS
+	
+	!-PrintPrimeFactorization ---------------------------------------------
+	! Recursive subroutine to display the prime factorization of a number
+	! in descending order.
+	!
+	! Receive: Number
+	! Return: Prime is true if Number is prime, false otherwise
+	! Output: Number, with commas
+	!-----------------------------------------------------------------------
+
+		RECURSIVE SUBROUTINE PrintPrimeFactorization(Number, Prime)
+			INTEGER, INTENT(IN) :: Number
+			LOGICAL, INTENT(OUT) :: Prime
+			INTEGER :: Divisor
+			
+			Divisor = 2;
+			
+			DO
+				IF (MOD(Number, Divisor) == 0) EXIT
+				Divisor = Divisor + 1
+			END DO
+			
+			IF (Number /= Divisor) THEN
+				CALL PrintPrimeFactorization(Number/ Divisor, Prime)
+				WRITE (*, '(' * ', I3)‘, ADVANCE = "NO') Divisor
+				Prime = .FALSE.
+			ELSE
+				WRITE (*, '(I3)', ADVANCE = "NO") Divisor
+				Prime = .TRUE.
+			END IF
+		END SUBROUTINE PrintPrimeFactorization
+	END PROGRAM Prime_Factorization
+
+Polynomial Evaluation
+=====================
+
+::
+
+	!-Polynomial Evaluation ---------------------------------------------
+	! Program to evaluate a polynomial. Identifiers used:
+	! A : array of coefficients
+	! Degree : degree of polynomial
+	! X : value at which to evaluate polynomial
+	! PolynomialValue : function subprogram to evaluate polynomial
+	! AllocateStatus : status variable for ALLOCATE
+	! Response : user response
+	! Input: Degree, array A of coefficients, X, and Response
+	! Output: Value of polynomial at X
+	! -------------------------------------------------------------------
+
+	PROGRAM PolynomialEvaluation
+		IMPLICIT NONE
+		INTEGER :: Degree, AllocateStatus
+		REAL, DIMENSION(:), ALLOCATABLE :: A
+		REAL :: X
+		CHARACTER(1) :: Response
+
+		WRITE (*, '(lX, A)‘, ADVANCE = ‘NO') ”Enter degree of polynomial:
+		READ *, Degree
+		ALLOCATE(A(0:Degree), STAT = AllocateStatus)
+		
+		IF (AllocateStatus /= 0) STOP "*** Not enough memory ***“
+		
+		PRINT *, "Enter coefficients, starting with constant term:'
+		READ *, A
+		
+		! Repeat the following until user decides to quit
+		DO
+			WRITE (*, '(lX, A)‘, ADVANCE = ‘NO') &
+				"Enter value at which to evaluate polynomial: "
+			READ *, X
+			PRINT *, 'Value of polynomial at‘, X, “is“, &
+				PolynomialValue(A, X)
+			WRITE (*, '(/1X, A)‘, ADVANCE = ‘NO“) “More X's (Y or N)? '
+			READ *, Response
+			IF (Response /= 'Y' .AND. Response /= 'y') EXIT
+		END DO
+		
+		CONTAINS
+	!-PolynomialValue --------------------------------------------------
+	! Function to evaluate polynomial with coefficients A(0), A(l), ... ,
+	! at X. Local variables used:
+	!    I : subscript
+	!    Power : power of X
+	!    Sum : accumulates terms
+	!
+	! Accepts: A and X
+	! Returns: Value of polynomial at X
+	! -------------------------------------------------------------------
+
+		FUNCTION PolynomialValue(A, X)
+			REAL :: PolynomialValue
+			REAL, DIMENSION(0:), INTENT(IN) :: A
+			REAL :: X, Sum, Power
+			INTEGER :: I
+			
+			Sum = A(0)
+			Power = 1.0
+			
+			DO I = l, SIZE(A)
+				Power = Power * X
+				Sum = Sum + A(I) * Power
+			END DO
+			
+			PolynomialValue = Sum
+			
+		END FUNCTION PolynomialValue
+	
+	END PROGRAM PolynomialEvaluation
+
+Fibonacci
+=========
+
+::
+
+	!-Fibonacci --------------------------------------------------------
+	! Program to find Fibonacci numbers. Variables used:
+	! N : number of Fibonacci numbers to generate
+	! Fib_l, Fib_2, Fib_3 : 3 consecutive Fibonacci numbers
+	! Count : counts Fibonacci numbers
+	! Input: N
+	! Output: List of first N Fibonacci numbers
+	! -------------------------------------------------------------------
+	
+	PROGRAM Fibonacci 
+		IMPLICIT NONE
+		INTEGER :: N, Fib_l, Fib_2, Fib_3, Count
+
+		! Get number of Fibonacci numbers to generate
+		PRINT *, "Enter number of Fibonacci numbers to generate:
+		READ *, N
+		
+		! Generate the numbers
+		PRINT *
+		PRINT *, ”First “, N, " Fibonacci numbers are:“
+		Fib_1 = 1
+		Fib_2 = 1
+		IF (N >= 1) PRINT *, Fib_l
+		IF (N >= 2) PRINT *, Fib_2
+		DO Count = 3, N
+			Fib_3 = Fib_1 + Fib_2
+			PRINT *, Fib_3
+			Fib_1 = Fib_2
+			Fib_2 = Fib_3
+		END DO
+	END PROGRAM Fibonacci
+	

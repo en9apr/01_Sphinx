@@ -1,6 +1,6 @@
-==========
-CFD Theory
-==========
+=====================================
+Computational Fluid Dynamics - Theory
+=====================================
 
 Introduction to CFD and the Navier-Stokes Equations
 ===================================================

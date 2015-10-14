@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3. Fortran Examples &mdash; The Visual Room</title>
+    
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="The Visual Room" href="index.html" /> 
+  </head>
+  <body>
+      <div class="header"><h1 class="heading"><a href="index.html">
+          <span>The Visual Room</span></a></h1>
+        <h2 class="heading"><span>3. Fortran Examples</span></h2>
+      </div>
+      <div class="topnav">
+      
+        <p>
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="fortran-examples">
+<h1>Fortran Examples<a class="headerlink" href="#fortran-examples" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#gcd" id="id1">GCD</a></li>
+<li><a class="reference internal" href="#prime" id="id2">Prime</a></li>
+<li><a class="reference internal" href="#prime-factorisation" id="id3">Prime Factorisation</a></li>
+<li><a class="reference internal" href="#polynomial-evaluation" id="id4">Polynomial Evaluation</a></li>
+<li><a class="reference internal" href="#fibonacci" id="id5">Fibonacci</a></li>
+</ul>
+</div>
+<p>Here are some good examples of Fortran style, separating the comments clearly from the code</p>
+<div class="section" id="gcd">
+<h2><a class="toc-backref" href="#id1">GCD</a><a class="headerlink" href="#gcd" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-fortran"><div class="highlight"><pre><span class="c">!-GCD -------------------------------------------------------------------</span>
+<span class="c">! Function to calculate the greatest common divisor of integers A and</span>
+<span class="c">! B using the Euclidean algorithm. It returns the value 0 if both of</span>
+<span class="c">! A and B are 0. Local variable:</span>
+<span class="c">!    A1, B1 : absolute values of A and B</span>
+<span class="c">!    Remainder : remainder of A divided by B</span>
+<span class="c">!</span>
+<span class="c">! Input: A and B</span>
+<span class="c">! Output: GCD of A and B (0 if both are 0)</span>
+<span class="c">!------------------------------------------------------------------------</span>
+
+<span class="k">FUNCTION </span><span class="n">GCD</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+
+        <span class="kt">INTEGER </span><span class="n">GCD</span><span class="p">,</span> <span class="n">A1</span><span class="p">,</span> <span class="n">B1</span><span class="p">,</span> <span class="n">Remainder</span>
+        <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span> <span class="kd">::</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span>
+
+        <span class="n">A1</span> <span class="o">=</span> <span class="nb">ABS</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+        <span class="n">Bl</span> <span class="o">=</span> <span class="nb">ABS</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+        <span class="k">IF</span> <span class="p">(</span><span class="n">Bl</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">                </span><span class="n">GCD</span> <span class="o">=</span> <span class="n">A1</span>
+        <span class="k">ELSE</span>
+<span class="k">                DO</span>
+<span class="k">                        </span><span class="n">Remainder</span> <span class="o">=</span> <span class="nb">MOD</span><span class="p">(</span><span class="n">Al</span><span class="p">,</span> <span class="n">Bl</span><span class="p">)</span>
+                        <span class="k">IF</span> <span class="p">(</span><span class="n">Remainder</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">EXIT</span> <span class="c">! Remainder is 0, terminate repetition</span>
+                        <span class="n">A1</span> <span class="o">=</span> <span class="n">B1</span>
+                        <span class="n">B1</span> <span class="o">=</span> <span class="n">Remainder</span>
+                <span class="k">END DO</span>
+
+<span class="k">                </span><span class="n">GCD</span> <span class="o">=</span> <span class="n">Bl</span>
+        <span class="k">END IF</span>
+
+<span class="k">END FUNCTION </span><span class="n">GCD</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="prime">
+<h2><a class="toc-backref" href="#id2">Prime</a><a class="headerlink" href="#prime" title="Permalink to this headline">¶</a></h2>
+<p>To determine if a positive integer N is prime, one need only check if it has any divisors in the
+range 2 through the square root of N. For if some integer D &gt; SQRT (N) divides N, say N =
+D * K, then K would be a divisor of N which is less than SQR’I‘ (N). And, of course, if 2 does
+not divide N, then neither does any even integer. These ideas are incorporated into the
+following function subprogram Prime:</p>
+<div class="highlight-fortran"><div class="highlight"><pre><span class="c">!-Prime ----------------------------------------------------------------</span>
+<span class="c">! Function to determine if positive integer N is a prime. The set</span>
+<span class="c">! consisting of 2 and odd integers in the range 3 through SQRT(N) is</span>
+<span class="c">! searched for divisors of N; the search terminates when one is found</span>
+<span class="c">! (Prime = .TRUE.) or all numbers in this set have been checked.</span>
+<span class="c">! Local variable:</span>
+<span class="c">!   Divisor : Possible divisor of N</span>
+<span class="c">!   Accepts: N</span>
+<span class="c">!   Returns: .TRUE. if N is a prime, .FALSE. otherwise</span>
+<span class="c">!-----------------------------------------------------------------------</span>
+
+<span class="k">FUNCTION </span><span class="n">Prime</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+
+        <span class="kt">LOGICAL</span> <span class="kd">::</span> <span class="n">Prime</span>
+        <span class="kt">INTEGER</span><span class="p">,</span> <span class="k">INTENT</span><span class="p">(</span><span class="n">IN</span><span class="p">)</span> <span class="kd">::</span> <span class="n">N</span>
+        <span class="kt">INTEGER</span> <span class="kd">::</span> <span class="n">Divisor</span>
+
+        <span class="c">! Check if N is even</span>
+        <span class="k">IF</span> <span class="p">(</span><span class="n">N</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">                </span><span class="n">Prime</span> <span class="o">=</span> <span class="p">.</span><span class="n">TRUE</span><span class="p">.</span>
+        <span class="k">ELSE IF</span> <span class="p">((</span><span class="n">N</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">.</span><span class="nb">OR</span><span class="p">.</span> <span class="p">(</span><span class="nb">MOD</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span> <span class="k">THEN</span>
+<span class="k">                </span><span class="n">Prime</span> <span class="o">=</span> <span class="p">.</span><span class="n">FALSE</span><span class="p">.</span>
+        <span class="k">ELSE</span> <span class="c">! Check for odd divisors in the range 3 through SQRT(N)</span>
+                <span class="n">Divisor</span> <span class="o">=</span> <span class="mi">3</span>
+                <span class="n">Prime</span> <span class="o">=</span> <span class="p">.</span><span class="n">TRUE</span><span class="p">.</span>
+                <span class="c">! While not Prime and Divisor is less than or equal to SQRT(N) do:</span>
+                <span class="k">DO</span>
+<span class="k">                        IF</span> <span class="p">(.</span><span class="nb">NOT</span><span class="p">.</span> <span class="n">Prime</span> <span class="p">.</span><span class="nb">OR</span><span class="p">.</span> <span class="p">(</span><span class="n">Divisor</span><span class="o">**</span><span class="mi">2</span> <span class="o">&gt;</span> <span class="n">N</span><span class="p">))</span> <span class="k">EXIT</span>
+<span class="k">                        IF</span> <span class="p">(</span><span class="nb">MOD</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">Divisor</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">THEN</span>
+<span class="k">                                </span><span class="n">Prime</span> <span class="o">=</span> <span class="p">.</span><span class="n">PALSE</span><span class="p">.</span>
+                        <span class="k">ELSE</span>
+<span class="k">                                </span><span class="n">Divisor</span> <span class="o">=</span> <span class="n">Divisor</span> <span class="o">+</span> <span class="mi">2</span>
+                        <span class="k">END IF</span>
+<span class="k">                END DO</span>
+<span class="k">        END IF</span>
+<span class="k">END FUNCTION </span><span class="n">Prime</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="prime-factorisation">
+<h2><a class="toc-backref" href="#id3">Prime Factorisation</a><a class="headerlink" href="#prime-factorisation" title="Permalink to this headline">¶</a></h2>
+<p>For some reason I&#8217;ve lost the highlighting... Literal include might be better than inline for lots of code on a page.</p>
+<div class="highlight-fortran"><div class="highlight"><pre>!-Prime_Factorization --------------------------------------------------
+! Program to display the prime factorization of a number and indicate
+! if it is a prime. Variable used:
+!   Number : integer to be factored
+!   Prime : true if number is prime, false otherwise
+!   PrintPrimeFactorization : subroutine to display the prime
+!   factorization of a number
+! Input: Number
+! Output: Prime factorization of Number (by PrintPrimeFactorization)
+!-----------------------------------------------------------------------
+
+PROGRAM Prime_Factorization
+        IMPLICIT NONE
+        INTEGER :: Number
+        LOGICAL :: Prime
+
+        DO
+                WRITE (*, &#39;(/1X, A)‘, ADVANCE = “NO&quot;) &amp;
+                        &quot;‘Enter an integer &gt; 1 (O to stop): &quot;
+                        READ *, Number
+                        IF (Number &lt;= 1) EXIT
+                        CALL PrintPrimeFactorization(Number, Prime)
+                        IF (Prime) PRINT *, “is prime“
+        END DO
+
+        CONTAINS
+
+!-PrintPrimeFactorization ---------------------------------------------
+! Recursive subroutine to display the prime factorization of a number
+! in descending order.
+!
+! Receive: Number
+! Return: Prime is true if Number is prime, false otherwise
+! Output: Number, with commas
+!-----------------------------------------------------------------------
+
+        RECURSIVE SUBROUTINE PrintPrimeFactorization(Number, Prime)
+                INTEGER, INTENT(IN) :: Number
+                LOGICAL, INTENT(OUT) :: Prime
+                INTEGER :: Divisor
+
+                Divisor = 2;
+
+                DO
+                        IF (MOD(Number, Divisor) == 0) EXIT
+                        Divisor = Divisor + 1
+                END DO
+
+                IF (Number /= Divisor) THEN
+                        CALL PrintPrimeFactorization(Number/ Divisor, Prime)
+                        WRITE (*, &#39;(&#39; * &#39;, I3)‘, ADVANCE = &quot;NO&#39;) Divisor
+                        Prime = .FALSE.
+                ELSE
+                        WRITE (*, &#39;(I3)&#39;, ADVANCE = &quot;NO&quot;) Divisor
+                        Prime = .TRUE.
+                END IF
+        END SUBROUTINE PrintPrimeFactorization
+END PROGRAM Prime_Factorization
+</pre></div>
+</div>
+</div>
+<div class="section" id="polynomial-evaluation">
+<h2><a class="toc-backref" href="#id4">Polynomial Evaluation</a><a class="headerlink" href="#polynomial-evaluation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-fortran"><div class="highlight"><pre>!-Polynomial Evaluation ---------------------------------------------
+! Program to evaluate a polynomial. Identifiers used:
+! A : array of coefficients
+! Degree : degree of polynomial
+! X : value at which to evaluate polynomial
+! PolynomialValue : function subprogram to evaluate polynomial
+! AllocateStatus : status variable for ALLOCATE
+! Response : user response
+! Input: Degree, array A of coefficients, X, and Response
+! Output: Value of polynomial at X
+! -------------------------------------------------------------------
+
+PROGRAM PolynomialEvaluation
+        IMPLICIT NONE
+        INTEGER :: Degree, AllocateStatus
+        REAL, DIMENSION(:), ALLOCATABLE :: A
+        REAL :: X
+        CHARACTER(1) :: Response
+
+        WRITE (*, &#39;(lX, A)‘, ADVANCE = ‘NO&#39;) ”Enter degree of polynomial:
+        READ *, Degree
+        ALLOCATE(A(0:Degree), STAT = AllocateStatus)
+
+        IF (AllocateStatus /= 0) STOP &quot;*** Not enough memory ***“
+
+        PRINT *, &quot;Enter coefficients, starting with constant term:&#39;
+        READ *, A
+
+        ! Repeat the following until user decides to quit
+        DO
+                WRITE (*, &#39;(lX, A)‘, ADVANCE = ‘NO&#39;) &amp;
+                        &quot;Enter value at which to evaluate polynomial: &quot;
+                READ *, X
+                PRINT *, &#39;Value of polynomial at‘, X, “is“, &amp;
+                        PolynomialValue(A, X)
+                WRITE (*, &#39;(/1X, A)‘, ADVANCE = ‘NO“) “More X&#39;s (Y or N)? &#39;
+                READ *, Response
+                IF (Response /= &#39;Y&#39; .AND. Response /= &#39;y&#39;) EXIT
+        END DO
+
+        CONTAINS
+!-PolynomialValue --------------------------------------------------
+! Function to evaluate polynomial with coefficients A(0), A(l), ... ,
+! at X. Local variables used:
+!    I : subscript
+!    Power : power of X
+!    Sum : accumulates terms
+!
+! Accepts: A and X
+! Returns: Value of polynomial at X
+! -------------------------------------------------------------------
+
+        FUNCTION PolynomialValue(A, X)
+                REAL :: PolynomialValue
+                REAL, DIMENSION(0:), INTENT(IN) :: A
+                REAL :: X, Sum, Power
+                INTEGER :: I
+
+                Sum = A(0)
+                Power = 1.0
+
+                DO I = l, SIZE(A)
+                        Power = Power * X
+                        Sum = Sum + A(I) * Power
+                END DO
+
+                PolynomialValue = Sum
+
+        END FUNCTION PolynomialValue
+
+END PROGRAM PolynomialEvaluation
+</pre></div>
+</div>
+</div>
+<div class="section" id="fibonacci">
+<h2><a class="toc-backref" href="#id5">Fibonacci</a><a class="headerlink" href="#fibonacci" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-fortran"><div class="highlight"><pre>!-Fibonacci --------------------------------------------------------
+! Program to find Fibonacci numbers. Variables used:
+! N : number of Fibonacci numbers to generate
+! Fib_l, Fib_2, Fib_3 : 3 consecutive Fibonacci numbers
+! Count : counts Fibonacci numbers
+! Input: N
+! Output: List of first N Fibonacci numbers
+! -------------------------------------------------------------------
+
+PROGRAM Fibonacci
+        IMPLICIT NONE
+        INTEGER :: N, Fib_l, Fib_2, Fib_3, Count
+
+        ! Get number of Fibonacci numbers to generate
+        PRINT *, &quot;Enter number of Fibonacci numbers to generate:
+        READ *, N
+
+        ! Generate the numbers
+        PRINT *
+        PRINT *, ”First “, N, &quot; Fibonacci numbers are:“
+        Fib_1 = 1
+        Fib_2 = 1
+        IF (N &gt;= 1) PRINT *, Fib_l
+        IF (N &gt;= 2) PRINT *, Fib_2
+        DO Count = 3, N
+                Fib_3 = Fib_1 + Fib_2
+                PRINT *, Fib_3
+                Fib_1 = Fib_2
+                Fib_2 = Fib_3
+        END DO
+END PROGRAM Fibonacci
+</pre></div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav">
+      
+        <p>
+        <a class="uplink" href="index.html">Contents</a>
+        </p>
+
+      </div>
+
+    <div class="footer">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
