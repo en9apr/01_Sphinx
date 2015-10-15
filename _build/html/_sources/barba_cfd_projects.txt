@@ -30,7 +30,8 @@ CFD Projects in iPython Notebooks on GitHub
 * `Leapfrog, Lax-Friedrichs and Lax-Wendroff Schemes: Linear Convection & Sinusoidal Function <http://nbviewer.ipython.org/github/en9apr/01_Sphinx/blob/master/Linear_Convection_Sinusoidal_Input.ipynb>`_
 * `Lax-Friedrichs, Lax-Wendroff and MacCormack Schemes: Non-linear Convection <http://nbviewer.ipython.org/github/en9apr/01_Sphinx/blob/master/Lax_Friedrichs_Lax_Wendroff_and_MacCormack_Schemes.ipynb>`_
 * `1D Fourier's Equation with Jacobi and Crank-Nicholson <http://nbviewer.ipython.org/github/en9apr/01_Sphinx/blob/master/Crank_Nicholson.ipynb>`_
- 
+* `Cavity flow versus Ghia <http://nbviewer.ipython.org/github/en9apr/01_Sphinx/blob/master/Navier_Stokes_Cavity_Modified.ipynb>`_
+
 Future CFD Projects
 ===================
 
