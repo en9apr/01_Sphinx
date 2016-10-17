@@ -1,1 +1,1 @@
-Website in Sphinx (www.thevisualroom.com)
+Website in Sphinx (www.thevisualroom.com).
